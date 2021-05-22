@@ -55,11 +55,67 @@ class DoublyLinkedList():
             
     # Insert a node at a specified index 
     def insert(self, index, value):
+        # Initialize counter, a new node, and the head
+        counter = 0
+        new_node = Node(value)
+        trav1 = self.head 
+
+        # If the given index is 0
+        if index == 0:
+
+            # Add the node at the head
+            self.prepend(value)
+            return 
+
+        # If the given index >= length,
+        if index >= self.length:
+            
+            # Add the node at the tail 
+            self.append(value)
+        
+        # While the counter < length
+        while counter < self.length:
+
+            # If the counter == index - 1 (since index starts at 0)
+            if counter == index - 1:
+
+                # The trav1's next node is placed as a holder
+                holder = trav1.next
+
+                # The new node is then added next to trav1
+                trav1.next = new_node
+
+                # The holder becomes new node's "next"
+                new_node.next = holder 
+
+                # trav1 becomes new node's "previous"
+                new_node.prev = trav1
+
+                # The new node becomes the holder's "previous"
+                holder.prev = new_node 
+                self.length += 1 
+                break 
+                
+            # If counter != index - 1, continue traversing
+            trav1 = trav1.next  
+            counter += 1
+    
+    # Removes an element at a specified index
+    def remove(self, index):
+        # Initialize counter to keep track of indices
         counter = 0
         trav1 = self.head 
 
-        
-        
+        while counter < self.length:
+            if counter == index - 1:
+               remove_node = trav1.next 
+               holder = remove_node.next 
+               trav1.next = holder 
+               holder.prev = trav1 
+               self.length -= 1
+               break 
+            trav1 = trav1.next 
+
      # Prints the whole DLL
     def printl(self):
         temp = self.head
@@ -71,9 +127,18 @@ class DoublyLinkedList():
 if __name__ == "__main__":
     x = DoublyLinkedList()
     x.append(3)
+    # x.printl()
     x.append(4)
+    x.printl()
     x.append(5)
+    x.printl()
     x.append(10)
+    x.printl()
     x.prepend(8)
     x.printl()
+    x.insert(4, 6)
+    x.printl()
+    x.remove(2)
+    x.printl()
+    
 
