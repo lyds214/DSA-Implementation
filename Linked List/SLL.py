@@ -3,7 +3,7 @@ class Node():
         self.value = value
         self.next = None 
 
-class LinkedList():
+class SinglyLinkedList():
     def __init__(self):
         self.head = None
         self.tail = None 
@@ -139,7 +139,7 @@ class LinkedList():
         print()
 
 if __name__ == "__main__":
-   x = LinkedList()
+   x = SinglyLinkedList()
    x.append(1)
    x.printl()
    x.append(2)
