@@ -130,6 +130,20 @@ class SinglyLinkedList():
             # Increment the counter to keep track of the indicies
             counter += 1 
     
+    # Reverse the SLL
+    def reverse(self):
+        prev = None 
+        self.tail = self.head 
+
+        while self.head is not None:
+            temp = self.head 
+            self.head = self.head.next 
+            temp.next = prev 
+            prev = temp 
+        self.head = temp
+        
+
+
     # Prints the whole SLL
     def printl(self):
         temp = self.head
@@ -141,14 +155,10 @@ class SinglyLinkedList():
 if __name__ == "__main__":
    x = SinglyLinkedList()
    x.append(1)
-   x.printl()
    x.append(2)
-   x.printl()
-   x.prepend(6)
-   x.printl()
-   x.prepend(5)
-   x.printl()
-   x.remove(2)
+   x.append(3)
+   x.append(4)
+   x.reverse()
    x.printl()
 
 
