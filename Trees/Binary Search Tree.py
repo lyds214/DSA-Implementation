@@ -63,13 +63,13 @@ class BinarySearchTree():
                 return False 
             
             # If the given value == current value,
-            if value == current.value:
+            if current.value == value:
 
                 # return true
                 return True 
            
             # If the current value <= given value,
-            elif current.value <= value:
+            elif value < current.value:
 
                 # Continuing traversing the BST as we assign the current's left as the current value
                 current = current.left 
@@ -79,7 +79,7 @@ class BinarySearchTree():
 
                 # Continuing travrsing the BST as we assign the current's right as the current value
                 current = current.right 
-        
+
 
     def print_tree(self):
         if self.root != None:
@@ -88,7 +88,7 @@ class BinarySearchTree():
     def printt(self,curr_node):
         if curr_node != None:
             self.printt(curr_node.left)
-            print(str(curr_node.data))
+            print(str(curr_node.value))
             self.printt(curr_node.right)
 
 x = BinarySearchTree()
@@ -99,3 +99,4 @@ x.insert(12)
 x.insert(8)
 y = x.lookup(6)
 print(y)
+x.print_tree()
