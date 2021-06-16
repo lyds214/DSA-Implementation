@@ -13,3 +13,5 @@ def factorialIterative(n):
         fact += num 
     
     return fact
+
+print(factorialRecursion(5))

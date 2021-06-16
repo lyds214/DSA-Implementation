@@ -91,6 +91,44 @@ class BinarySearchTree():
             print(str(curr_node.value))
             self.printt(curr_node.right)
 
+    def BFSIterative(self):
+        current_node = self.root 
+        list = [] 
+        queue = [] 
+
+        queue.append(current_node)
+
+        while len(queue) > 0:
+            current_node = queue[0]
+            del queue[0]
+            list.append(current_node.value)
+
+            if current_node.left:
+                queue.append(current_node.left)
+            
+            if current_node.right:
+                queue.append(current_node.right)
+        
+        return list 
+             
+
+    def BFSRecursive(self, queue, list):
+        if len(queue) == 0:
+            return list 
+        
+        current_node = queue[0]
+        del queue[0]
+        list.append(current_node.value)
+
+        if current_node.left:
+            queue.append(current_node.left)
+        
+        if current_node.right:
+            queue.append(current_node.right)
+        
+        return self.BFSRecursive(queue, list)
+
+
 x = BinarySearchTree()
 x.insert(10)
 x.insert(5)
@@ -100,3 +138,5 @@ x.insert(8)
 y = x.lookup(6)
 print(y)
 x.print_tree()
+print(x.BFSIterative())
+print(x.BFSRecursive([x.root], []))
