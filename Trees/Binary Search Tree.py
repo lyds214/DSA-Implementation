@@ -127,6 +127,29 @@ class BinarySearchTree():
             queue.append(current_node.right)
         
         return self.BFSRecursive(queue, list)
+    
+    def inOrder(self, current_node, list):
+        if current_node != None:
+            self.inOrder(current_node.left, list)
+            list.append(current_node.value)
+            self.inOrder(current_node.right, list)
+        return list 
+    
+    def preOrder(self, current_node, list):
+        if current_node != None:
+            list.append(current_node.value)
+            self.preOrder(current_node.left, list)
+            self.preOrder(current_node.right, list)
+        return list 
+    
+    def postOrder(self, current_node, list):
+        if current_node.left:
+            self.postOrder(current_node.left, list)
+        if current_node.right:
+            self.postOrder(current_node.right, list)
+        list.append(current_node.value)
+        return list
+
 
 
 x = BinarySearchTree()
